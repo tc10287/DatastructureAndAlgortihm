@@ -1,0 +1,87 @@
+class BST:
+    def __init__(self, key):
+        self.key = key
+        self.left = None
+        self.right = None
+
+    def insert(self,data):
+        if self.key is None:
+            self.key = data
+            return
+        if self.key == data:
+            return
+        if self.key > data:
+            if self.left:
+                self.left.insert(data)
+            else:
+                self.left = BST(data)
+        elif self.key < data:
+            if self.right:
+                self.right.insert(data)
+            else:
+                self.right = BST(data)
+
+    def search(self, data):
+        if self.key is None:
+            print("the tree is empty")
+            return
+        if self.key == data:
+            print("node is found")
+            return
+        if self.key > data:
+            if self.left:
+                self.left.search(data)
+            else:
+                print("no node exist")
+        elif self.key < data:
+            if self.right:
+                self.right.search(data)
+            else:
+                print("no node exists")
+        else:
+            print("given values does not exist")
+            return
+
+    def delete(self,data):
+        if self.key is None:
+            print("Binary tree does not exists")
+        if self.key > data:
+            if self.left:
+                self.left = self.left.delete(data)
+            else:
+                print("given node is not present")
+        elif self.key < data:
+            if self.right:
+                self.right = self.right.delete(data)
+            else:
+                print("given node is not present")
+        else:
+            if self.left is None:
+                temp = self.right
+                self = None
+                return temp
+            elif self.right is None:
+                temp = self.left
+                self = None
+                return temp
+            else:
+                node = self.right
+                while node.left:
+                    node = node.left
+                self.key = node.key
+                self.right = self.right.delete(node.key)
+            return self
+
+root = BST(None)
+root.insert(30)
+list = [20,18,23,20,41,22,41]
+for i in list:
+    root.insert(i)
+root.search(41)
+root.search(23)
+root.delete(41)
+root.delete(12)
+root.delete(27)
+
+
+
