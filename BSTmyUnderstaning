@@ -41,6 +41,27 @@ class BST:
         else:
             print("given values does not exist")
             return
+    def preorder(self):    #root->left->right
+        print(self.key)
+        if self.left:
+            self.left.preorder()
+        if self.right:
+            self.right.preorder()
+
+    def inorder(self):
+        if self.left:
+            self.left.inorder()
+        print(self.key)
+        if self.right:
+            self.right.inorder()
+
+    def postorder(self):
+        if self.left:
+            self.left.postorder()
+        if self.right:
+            self.right.postorder()
+        print(self.key)
+
 
     def delete(self,data):
         if self.key is None:
@@ -74,14 +95,25 @@ class BST:
 
 root = BST(None)
 root.insert(30)
-list = [20,18,23,20,41,22,41]
+list = [20,18,22,68,12,83,55,108]
 for i in list:
     root.insert(i)
+
+print("Preorder")
+root.preorder()
+print("inorder")
+root.inorder()
+print("postorder")
+root.postorder()
 root.search(41)
-root.search(23)
-root.delete(41)
-root.delete(12)
-root.delete(27)
+root.search(83)
+root.delete(68)
+root.delete(22)
+print("after deletion")
+print("inorder")
+root.inorder()
+
+
 
 
 
