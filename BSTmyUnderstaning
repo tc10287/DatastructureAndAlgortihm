@@ -4,7 +4,7 @@ class BST:
         self.left = None
         self.right = None
 
-    def insert(self,data):
+    def insert(self, data):
         if self.key is None:
             self.key = data
             return
@@ -41,7 +41,7 @@ class BST:
         else:
             print("given values does not exist")
             return
-    def preorder(self):    #root->left->right
+    def preorder(self):     #root->left->right
         print(self.key)
         if self.left:
             self.left.preorder()
@@ -61,6 +61,18 @@ class BST:
         if self.right:
             self.right.postorder()
         print(self.key)
+
+    def min(self):
+        while self.left:
+            self = self.left
+        print("smallest node is ", self.key)
+        return
+
+    def max(self):
+        while self.right:
+            self = self.right
+        print("largest node is ", self.key)
+        return
 
 
     def delete(self,data):
@@ -98,7 +110,8 @@ root.insert(30)
 list = [20,18,22,68,12,83,55,108]
 for i in list:
     root.insert(i)
-
+root.min()
+root.max()
 print("Preorder")
 root.preorder()
 print("inorder")
