@@ -63,16 +63,16 @@ class BST:
         print(self.key)
 
     def min(self):
-        while self.left:
-            self = self.left
-        print("smallest node is ", self.key)
-        return
-
+        if self.left:
+            self.left.min()
+        else:
+            print("smallest node is ", self.key)
     def max(self):
-        while self.right:
-            self = self.right
-        print("largest node is ", self.key)
-        return
+        if self.right:
+            self.right.max()
+        else:
+            print("largest node is ", self.key)
+
 
 
     def delete(self,data):
